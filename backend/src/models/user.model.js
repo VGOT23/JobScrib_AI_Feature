@@ -12,16 +12,15 @@ const userSchema = new mongoose.Schema({
         required : true,
         unique : true,
         lowercase : true,
-        match: [/^\S+@\S+\.\S+$/, "Invalid email format"]
     },
-    passwordHash : {
+    password : {
         type : String,
         required : true
     },
-    timestamps: true
-})
+},
+)
 
-userSchema.index({ email: 1 }); // Index for faster Loop
+// userSchema.index({ email: 1 }); // Index for faster Loop
 
 const userModel = mongoose.model("user",userSchema);
 

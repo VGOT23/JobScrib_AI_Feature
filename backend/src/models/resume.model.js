@@ -48,7 +48,14 @@ const resumeSchema = new mongoose.Schema(
       type: Number,
       default: 1,
     },
+    jobApplicationId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "JobApplication",
+    required: true,
+    index: true,
+}
   },
+  
   {
     timestamps: true,
   }
