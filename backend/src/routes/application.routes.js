@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const applicationController = require('../controllers/application.controller')
-const {authUser} = require('../middlewares/auth.middleware')
-
-router.get('/',authUser,applicationController.getAllApplication);
+const authMiddleware = require('../middlewares/auth.middleware')
+router.get('/',authMiddleware.userAuth,applicationController.getAllApplication);
 router.post('/register',applicationController.registerApplication);
 router.delete('/:id',applicationController.deleteApplication);
 router.patch('/:id',applicationController.updateApplication);
