@@ -37,7 +37,8 @@ const jobApplicationSchema = new mongoose.Schema(
       },
     ],
     resumeId: {
-      type: mongoose.Schema.Types.ObjectId,
+      // type: mongoose.Schema.Types.ObjectId,
+      type : String,
       ref: "Resume",
       default: null,
     },

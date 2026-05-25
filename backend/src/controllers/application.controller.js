@@ -41,7 +41,6 @@ async function registerApplication(req, res) {
       job_application_id: application._id,
     });
   } catch (error) {
-    console.log(error);
     return res.status(401).json({
       error: error,
     });
