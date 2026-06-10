@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const resumeModel = require("../models/resume.model");
 
 async function getAllApplication(req, res) {
-  const user = req.user;
-  const allJobapplication = await jobApplicationmodel.find({ user });
+  const user = req.user.id;
+  const allJobapplication = await jobApplicationmodel.find({ user_id : user });
   return res.status(200).json({
     message: "all job application are feteched",
     JobApplications: allJobapplication,
@@ -51,7 +51,28 @@ async function registerApplication(req, res) {
   }
 }
 
-async function deleteApplication(req, res) {}
+async function deleteApplication(req, res) {
+  try {
+    const application_id = req.params.id;
+    const user_id = req.user.id;
+    const deleteapplication = await jobApplicationmodel.findOneAndDelete({
+      _id : application_id,
+      user_id : user_id
+    })
+    if( !deleteapplication){
+      return res.status(404).json({
+        message : "Application Not Found"
+      })
+    }
+    return res.status(200).json({
+      message : "Job application deleted Successfully"
+    })
+  } catch (error) {
+    return res.status(500).json({
+      message : error.message
+    })
+  }
+}
 
 async function updateApplication(req, res) {}
 module.exports = {
