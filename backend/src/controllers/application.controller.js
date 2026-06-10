@@ -1,5 +1,6 @@
 const jobApplicationmodel = require("../models/jobapplication.model");
 const mongoose = require("mongoose");
+const resumeModel = require("../models/resume.model");
 
 async function getAllApplication(req, res) {
   const user = req.user;
@@ -13,7 +14,13 @@ async function getAllApplication(req, res) {
 
 async function registerApplication(req, res) {
   try {
-    const user_id = req.user;
+    const user_id = req.user.id;
+    const resumeId = await resumeModel.findOne({userId : user_id});
+    if(!resumeId){
+      return res.status(404).json({
+        message : "user resume not uploaded"
+      })
+    }
     const {
       company,
       role,
@@ -21,8 +28,6 @@ async function registerApplication(req, res) {
       jobLink,
       platform,
       skillsRequired,
-      resumeId,
-      notes,
     } = req.body;
     const application = await jobApplicationmodel.create({
       user_id: user_id,
@@ -32,12 +37,11 @@ async function registerApplication(req, res) {
       jobLink: jobLink,
       platform: platform,
       skillsRequired: skillsRequired,
-      resumeId: resumeId,
-      notes: notes,
+      resumeId: resumeId._id
     });
     return res.status(201).json({
       message: "Job application created",
-      user_id: user_id,
+      user_id: application.user_id,
       job_application_id: application._id,
     });
   } catch (error) {

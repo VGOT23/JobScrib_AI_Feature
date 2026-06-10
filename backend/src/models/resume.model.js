@@ -22,38 +22,13 @@ const resumeSchema = new mongoose.Schema(
 
     fileType: {
       type: String,
-      enum: ["pdf", "doc", "docx"],
+      // enum: ["pdf", "doc", "docx"],
       required: true,
     },
 
     fileSize: {
       type: Number, // in bytes
     },
-
-    // extracted content (for AI processing)
-    parsedText: {
-      type: String,
-    },
-
-    // extracted skills (optional preprocessing)
-    skills: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
-
-    // versioning (important if user uploads multiple versions)
-    version: {
-      type: Number,
-      default: 1,
-    },
-    jobApplicationId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "JobApplication",
-    required: true,
-    index: true,
-}
   },
   
   {

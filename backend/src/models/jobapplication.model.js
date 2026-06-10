@@ -37,15 +37,9 @@ const jobApplicationSchema = new mongoose.Schema(
       },
     ],
     resumeId: {
-      // type: mongoose.Schema.Types.ObjectId,
-      type : String,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Resume",
       default: null,
-    },
-    notes: {
-      type: String,
-      trim: true,
-      maxlength: 1000,
     },
     appliedat: {
       type: Date,
