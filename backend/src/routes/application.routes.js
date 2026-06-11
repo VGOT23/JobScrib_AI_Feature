@@ -5,6 +5,6 @@ const authMiddleware = require('../middlewares/auth.middleware')
 router.get('/',authMiddleware.userAuth,applicationController.getAllApplication);
 router.post('/register',authMiddleware.userAuth,applicationController.registerApplication);
 router.delete('/:id',authMiddleware.userAuth,applicationController.deleteApplication);
-router.patch('/:id',applicationController.updateApplication);
+router.patch('/:id',authMiddleware.userAuth,applicationController.updateApplication);
 
 module.exports = router;

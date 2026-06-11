@@ -22,7 +22,7 @@ const resumeSchema = new mongoose.Schema(
 
     fileType: {
       type: String,
-      // enum: ["pdf", "doc", "docx"],
+      enum: ["pdf", "doc", "docx"],
       required: true,
     },
 
