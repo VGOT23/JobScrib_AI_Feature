@@ -36,6 +36,17 @@ const jobApplicationSchema = new mongoose.Schema(
         trim: true,
       },
     ],
+    salary : {
+      type : Number
+    },
+    location : {
+      type : String,
+      trim : true
+    },
+    notes :{
+      type : String
+
+    },
     resumeId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Resume",

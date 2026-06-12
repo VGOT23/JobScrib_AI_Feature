@@ -1,0 +1,61 @@
+/* 1. Reset defaults and fix box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Force the HTML and Body to fill the viewport */
+html, body, #root {
+  width: 100%;
+  height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 3. Base body styles to ensure visibility */
+body {
+  background-color: #121214; /* Dark gray background */
+  color: #ffffff;            /* High-contrast white text */
+  line-height: 1.5;
+}
+
+/* 4. Center container to easily debug layout rendering */
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem;
+}
+
+/* 5. Clear styling for fallback navigation links */
+nav {
+  display: flex;
+  gap: 15px;
+  background-color: #1a1a1e;
+  padding: 12px 24px;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border: 1px solid #2a2a30;
+}
+
+nav a {
+  color: #646cff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: #535bf2;
+}
+
+/* 6. Utility class to make page containers distinct */
+.page-container {
+  background: #1a1a1e;
+  border: 2px dashed #3a3a40; /* Dashed border to see component boundaries */
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}

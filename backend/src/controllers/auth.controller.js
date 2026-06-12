@@ -79,6 +79,18 @@ async function loginUser(req,res) {
         email : user.email
     })
 }
+async function userlogOut(req,res) {
+    const token = req.cookies?.token
+    if( !token ){
+        return res.status(200).json({
+            message : "user already logout"
+        })
+    }
+    res.clearCookie("token");
+    return res.status(200).json({
+        message : "user log out successfully",
+        success : true
+    })
 
-
-module.exports = {registerUser,loginUser}
+}
+module.exports = {registerUser,loginUser,userlogOut}
